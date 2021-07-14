@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
+{% load crispy_forms_tags %}
+{% load static %}
+
 {% block content %}
     <section id="showcase-inner" class="py-5 text-white">
         <div class="container">
@@ -21,10 +24,10 @@
                         <a href="{% url 'home' %}">
                             <i class="fas fa-home"></i> Home</a>
                     </li>
-                    <li class="breadcrumb-item active"> Dashboard</li>
+                    <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
                     <li class="breadcrumb-item"><a href="#">Message</a></li>
                     <li class="breadcrumb-item"><a href="#">Favoris</a></li>
-                    <li class="breadcrumb-item"><a href="{% url 'profile-update' %}">Modifier mon compte</a></li>
+                    <li class="breadcrumb-item active">Modifier mon compte</li>
                 </ol>
             </nav>
         </div>
@@ -36,22 +39,19 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
-                            <h1 class="h3">Mon Profile</h1>
+                            <h1 class="h3">Modifier mon Profile : <a href="{% url 'dashboard' %}">Retour à mon Profile</a></h1>
                         </div>
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="{{ user.profile.image.url }}" />
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    {{ u_form|crispy }}
+                                    {{ p_form|crispy }}
                                 </div>
-                                <div class="col-md-8">
-                                    <h3>Présentation </h3>
-                                    <p>{{ user.profile.description }}</p>
-                                    <hr>
-                                    <h6>Dernière connexion le {{ user.last_login|date }}</h6>
-                                    <hr>
-                                    <h6>Membre depuis le {{ user.profile.created |date }}</h6>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Mettre à jour</button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
