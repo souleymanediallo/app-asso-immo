@@ -19,6 +19,14 @@
                                 </div>
                                 <input type="submit" value="Connexion" class="btn btn-secondary btn-block">
                             </form>
+                            <p class="mt-3"><span class="small">
+                                        <a class="text-user" href="{% url 'password_reset' %}">Mot de passe oublié</a>
+                                    </span></p>
+                        </div>
+                        <div class="card-footer">
+                            <span class="small">Vous n'avez pas de compte ?
+                                <a class="text-user" href="{% url 'register' %}">Inscription</a>
+                            </span>
                         </div>
                     </div>
                 </div>

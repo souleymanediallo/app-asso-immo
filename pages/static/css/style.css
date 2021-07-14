@@ -106,6 +106,9 @@ h4, .h4 {
   font-weight: 700;
 }
 
+.text-user {
+  color: #1ba87e;
+}
 .btn:not(:disabled):not(.disabled) {
   cursor: pointer;
   text-transform: uppercase;
