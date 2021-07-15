@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <section id="showcase-inner" class="py-5 text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h1 class="display-4">Mentions légales</h1>
+                    <p class="lead">APP-ASSO-IMMO</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section id="bc" class="mt-3">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="breadcrumb-item active"> Mentions légales</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <section id="about" class="py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h5 class="pb-0">Publications</h5>
+                    <hr class="m-0">
+                    <p class="mt-2 text-justify">
+                        L'application web est édité par l'agence IT Consulting & Development, SAS au capital de 10.000 €,
+                        dont le siège social est 7 Rue de la Paix 75002 Paris. Vous pouvez nous contacter :
+                    </p>
+                    <ul class="mb-5 text-justify">
+                        <li>via notre formulaire de contact</li>
+                        <li>par téléphone au +336 01 02 03 04</li>
+                    </ul>
+                    <h5>Responsable de la publication</h5>
+                    <hr class="m-0">
+                    <p class="mb-5 mt-2 text-justify">
+                        Monsieur Marlin Guillou en sa qualité de président de l'association  est
+                        le directeur de la publication de l'application www.app-asso-immo.com
+                    </p>
+                    <h5>Hébergement</h5>
+                    <hr class="m-0">
+                    <p class="mb-5 mt-2 text-justify">
+                        L'application web est hébergé par la société heroku  dont le siège social est
+                        sis 2 rue Kellermann, 59100 Roubaix, France.
+                    </p>
+                    <h5>Protection des données personnelles</h5>
+                    <hr class="m-0">
+                    <p class="mb-5 mt-2 text-justify">
+                        Les utilisateurs de l'application web peuvent consulter la politique de
+                        protection des données personnelles appliquées par APP-ASSO-IMMO pour www.app-asso-immo.com
+                    </p>
+                    <h5>Propriété intellectuelle</h5>
+                    <hr class="m-0">
+                    <p class="mb-5 mt-2 text-justify">
+                        L’intégralité du contenu, de l’ergonomie de l'application, de sa mise en page
+                        ainsi que tout autre élément composant l'application sont la propriété exclusive de
+                        l'association APP-ASSO-IMMO ou sont incorporés sur l'application
+                        avec la permission des titulaires de droits.
+
+                        Ces éléments sont protégés par le code de la Propriété Intellectuelle, ainsi que par les
+                        dispositions des traités et des accords internationaux relatives aux droits d’auteur.
+
+                        En conséquence, toute utilisation, modification, représentation et reproduction partielle ou
+                        intégrale, pour usage autre que privé est formellement interdite.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

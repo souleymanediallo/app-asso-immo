@@ -8,3 +8,7 @@ def home(request):
 
 def about(request):
     return render(request, "pages/association.html")
+
+
+def mentions(request):
+    return render(request, "pages/mentions-legales.html")
