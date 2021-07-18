@@ -18,7 +18,10 @@ class MyUserManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, username, password=None):
-        user = self.create_user(email=email, username=username, password=password)
+        user = self.create_user(
+            email=email,
+            username=username,
+            password=password)
         user.is_staff = True
         user.is_admin = True
         user.save()
@@ -27,7 +30,11 @@ class MyUserManager(BaseUserManager):
 
 class CustomUser(AbstractBaseUser):
     email = models.EmailField(max_length=255, unique=True)
-    username = models.CharField(max_length=100, unique=True, verbose_name="Pseudo")
+    username = models.CharField(
+        max_length=100,
+        unique=True,
+        verbose_name="Pseudo"
+    )
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
@@ -45,7 +52,10 @@ class CustomUser(AbstractBaseUser):
 
 class Profile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    image = models.ImageField(default="user.png", upload_to="photos", blank=True, null=True)
+    image = models.ImageField(default="user.png",
+                              upload_to="photos",
+                              blank=True,
+                              null=True)
     description = models.TextField(blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
 

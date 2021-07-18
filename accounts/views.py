@@ -12,7 +12,8 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get("username")
-            messages.success(request, f"Votre compte a bien été créé {username}")
+            messages.success(request,
+                             f"Votre compte a bien été créé {username}")
             return redirect('home')
     else:
         form = UserRegisterForm()
@@ -30,11 +31,18 @@ def dashboard(request):
 def profile_update(request):
     if request.method == "POST":
         u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        p_form = ProfileUpdateForm(
+            request.POST,
+            request.FILES,
+            instance=request.user.profile
+        )
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
-            messages.success(request, f"Votre compte a été mis à jour.")
+            username = u_form.cleaned_data.get("username")
+            messages.success(
+                request,
+                f"Votre compte a été mis à jour {username}")
             return redirect('dashboard')
     else:
         u_form = UserUpdateForm(instance=request.user)
