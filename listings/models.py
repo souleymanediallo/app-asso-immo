@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 # Create your models here.
@@ -11,6 +12,9 @@ class Realtor(models.Model):
     email = models.CharField(max_length=50)
     active = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.name
@@ -25,9 +29,9 @@ class Listing(models.Model):
     description = models.TextField(blank=True)
     price = models.IntegerField()
     bedrooms = models.IntegerField()
-    bathrooms = models.DecimalField(max_digits=2, decimal_places=1)
+    bathrooms = models.IntegerField()
     garage = models.IntegerField(default=0)
-    size = models.DecimalField(max_digits=5, decimal_places=1)
+    size = models.IntegerField()
     conditioner = models.BooleanField(default=False)
     pool = models.BooleanField(default=False)
     fireplace = models.BooleanField(default=False)
@@ -42,6 +46,9 @@ class Listing(models.Model):
     published = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    def get_absolute_url(self):
+        return reverse('listing-detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return f"{self.title} - {self.city}"

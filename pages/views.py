@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from listings.models import Realtor, Listing
 
 
 # Create your views here.
 def home(request):
-    return render(request, "pages/index.html")
+    listings = Listing.objects.all()[:2]
+    context = {'listings': listings}
+    return render(request, "pages/index.html", context)
 
 
 def about(request):
