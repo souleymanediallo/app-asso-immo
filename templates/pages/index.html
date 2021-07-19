@@ -13,7 +13,7 @@
                     </h1>
                     <p class="lead">Bénéficiez de l’expertise et la connaissance du marché de nos agents immobiliers.</p>
                     <div class="search">
-                        <form action="search.html">
+                        <form action="{% url 'search' %}">
                             <!-- Form Row 1 -->
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
@@ -29,10 +29,10 @@
                                 <div class="col-md-4 mb-3">
                                     <label class="sr-only">State</label>
                                     <select name="state" class="form-control">
-                                        <option selected="true" disabled="disabled">State (All)</option>
-                                        <option value="AL">Alabama</option>
-                                        <option value="AK">Alaska</option>
-                                        <option value="AZ">Arizona</option>
+                                        <option selected="true" disabled="disabled">Ville</option>
+                                        {% for key, value in city_choices.items %}
+                                        <option value="{{ key }}">{{ value }}</option>
+                                       {% endfor %}
                                     </select>
                                 </div>
                             </div>
@@ -41,17 +41,18 @@
                                 <div class="col-md-6 mb-3">
                                     <label class="sr-only">Bedrooms</label>
                                     <select name="bedrooms" class="form-control">
-                                        <option selected="true" disabled="disabled">Bedrooms (All)</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
+                                        <option selected="true" disabled="disabled">Chambre</option>
+                                        {% for key, value in bedroom_choices.items %}
+                                            <option value="{{ key }}">{{ value }}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <select name="price" class="form-control" id="type">
-                                        <option selected="true" disabled="disabled">Max Price (Any)</option>
-                                        <option value="100000">$100,000</option>
-                                        <option value="200000">$200,000</option>
-                                        <option value="1000000">$1M+</option>
+                                        <option selected="true" disabled="disabled">Prix</option>
+                                        {% for key, value in price_choices.items %}
+                                            <option value="{{ key }}">{{ value }}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>
