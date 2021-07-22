@@ -17,19 +17,22 @@
                             <!-- Form Row 1 -->
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
-                                    <label class="sr-only">Keywords</label>
-                                    <input type="text" name="keywords" class="form-control" placeholder="Keyword (Pool, Garage, etc)">
+                                    <label class="sr-only">Mots clés</label>
+                                    <input type="text"
+                                           name="keywords"
+                                           class="form-control"
+                                           placeholder="Villa, Maison etc...">
                                 </div>
 
                                 <div class="col-md-4 mb-3">
-                                    <label class="sr-only">City</label>
-                                    <input type="text" name="city" class="form-control" placeholder="City">
+                                    <label class="sr-only">Ville</label>
+                                    <input type="text" name="city" class="form-control" placeholder="Ville">
                                 </div>
 
                                 <div class="col-md-4 mb-3">
-                                    <label class="sr-only">State</label>
+                                    <label class="sr-only">Top ville recherché</label>
                                     <select name="state" class="form-control">
-                                        <option selected="true" disabled="disabled">Ville</option>
+                                        <option selected="true" disabled="disabled">Les Villes plus recherchés</option>
                                         {% for key, value in city_choices.items %}
                                         <option value="{{ key }}">{{ value }}</option>
                                        {% endfor %}
@@ -39,7 +42,7 @@
                             <!-- Form Row 2 -->
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
-                                    <label class="sr-only">Bedrooms</label>
+                                    <label class="sr-only">Chambre</label>
                                     <select name="bedrooms" class="form-control">
                                         <option selected="true" disabled="disabled">Chambre</option>
                                         {% for key, value in bedroom_choices.items %}

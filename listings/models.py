@@ -13,6 +13,9 @@ class Realtor(models.Model):
     active = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        permissions = [('group_realtor', 'Can eat add annonces')]
+
     def get_absolute_url(self):
         return reverse('detail', kwargs={'pk': self.pk})
 
