@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from listings.models import Realtor, Listing
+from listings.models import Listing
 from .choices import bedroom_choices, price_choices, city_choices
 
 

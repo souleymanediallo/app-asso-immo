@@ -52,11 +52,17 @@ class CustomUser(AbstractBaseUser):
 
 class Profile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=200, blank=True, null=True)
+    last_name = models.CharField(max_length=200, blank=True, null=True)
+    phone = models.CharField(max_length=20, blank=True, null=True)
     image = models.ImageField(default="user.png",
                               upload_to="photos",
                               blank=True,
                               null=True)
     description = models.TextField(blank=True, null=True)
+    experience = models.CharField(max_length=20, blank=True, null=True)
+    active = models.BooleanField(default=True)
+    realtor = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

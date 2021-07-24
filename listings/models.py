@@ -1,32 +1,12 @@
 from django.db import models
 from django.urls import reverse
 
-
+from accounts.models import Profile
 # Create your models here.
 
 
-class Realtor(models.Model):
-    name = models.CharField(max_length=200)
-    photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
-    description = models.TextField(blank=True)
-    experience = models.CharField(max_length=20)
-    phone = models.CharField(max_length=20)
-    email = models.CharField(max_length=50)
-    active = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        permissions = [('group_realtor', 'Can eat add annonces')]
-
-    def get_absolute_url(self):
-        return reverse('detail', kwargs={'pk': self.pk})
-
-    def __str__(self):
-        return self.name
-
-
 class Listing(models.Model):
-    realtor = models.ForeignKey(Realtor, on_delete=models.CASCADE)
+    realtor = models.ForeignKey(Profile, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
     zipcode = models.CharField(max_length=20)

@@ -25,6 +25,9 @@
                     <li class="breadcrumb-item"><a href="{% url 'message-dashboard' %}">Message</a></li>
                     <li class="breadcrumb-item"><a href="#">Favoris</a></li>
                     <li class="breadcrumb-item"><a href="{% url 'profile-update' %}">Modifier mon compte</a></li>
+                    {% if user.profile.realtor == True %}
+                    <li class="breadcrumb-item"><a href="{% url 'my-listing' %}">Mes Annonces</a></li>
+                    {% endif %}
                 </ol>
             </nav>
         </div>
