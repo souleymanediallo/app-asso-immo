@@ -29,6 +29,8 @@
         </div>
     </section>
 
+    {% include 'partials/alerts.html' %}
+
     <!-- Listings -->
     <section id="listings" class="py-5">
         <div class="container">
@@ -66,8 +68,22 @@
                                     <div class="col-6"><i class="fas fa-user"></i> {{ listing.realtor.name }}</div>
                                     <div class="col-6"><i class="fas fa-clock"></i> {{ listing.created }}</div>
                                 </div>
+                                <!-- add favorite -->
+                                <div class="text-center mt-3">
+                                <a>
+                                    {% if user.is_authenticated %}
+                                        <div class="save-result" id="{{ listing.id }}"></div>
+                                        <form method="POST" action="{% url 'favorite-add' product_id=listing.id %}">
+                                            {% csrf_token %}
+                                            <button class="btn btn-warning btn-xl mt-50" type="submit" id="{{ listing.id }}"><i class="fa fa-heart"></i> Ajouter aux favoris</button>
+                                        </form>
+                                    {% endif %}
+                                </a>
+                                </div>
+                                <!-- end -->
                                 <hr>
                                 <a href="{{ listing.get_absolute_url }}" class="btn btn-primary btn-block">Lire la suite</a>
+
                             </div>
                         </div>
                     </div>

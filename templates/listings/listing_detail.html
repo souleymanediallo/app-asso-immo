@@ -33,7 +33,9 @@
     <!-- Listing -->
     <section id="listing-list" class="py-4">
         <div class="container">
-            <a href="{% url 'listing-list' %}" class="btn btn-light mb-4">Retour aux annonces</a>
+            <a href="{% url 'listing-list' %}" class="btn btn-primary mb-4">Retour aux annonces</a>
+
+{#            <a href="{% url 'favorite' favorite.id %}" class="btn btn-warning mb-4">Ajouter dans mes favorits</a>#}
             <div class="row">
                 <div class="col-md-9">
                     <!-- Home Main Image -->
@@ -138,6 +140,13 @@
                             {{ listing.description }}
                         </div>
                     </div>
+                    <!--- start favorite -->
+{#                    <form method='POST' action="{% url 'favorite-add' favorite.id %}">#}
+{#                        {% csrf_token %}#}
+{#                        <input type='hidden' name='video' value={{ favorite.id }}>#}
+{#                        <button type='submit' class="btn btn-warning">Ajouter dans mes favorits </button>#}
+{#                    </form>#}
+                    <!-- end favorite -->
                 </div>
                 <div class="col-md-3">
                     <div class="card mb-3">

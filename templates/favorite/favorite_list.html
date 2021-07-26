@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section id="showcase-inner" class="py-5 text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <h1 class="display-4">Mes Produits Favorits</h1>
+                    <p class="lead">App-Asso-Immo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section id="bc" class="mt-3">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'home' %}">
+                            <i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="breadcrumb-item active"> Dashboard</li>
+                    <li class="breadcrumb-item"><a href="#">Message</a></li>
+                    <li class="breadcrumb-item"><a href="#">Favoris</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'profile-update' %}">Modifier mon compte</a></li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    {% include 'partials/alerts.html' %}
+
+    <section id="dashboard" class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {% if favorites %}
+
+                        <h3 class="my-3">Mes Produits</h3>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Liste des annonces</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for listing in favorites %}
+                                <tr>
+                                    <td>{{ listing.product.title }}</td>
+                                    <td>
+                                        <a class="btn btn-primary" href="{% url 'listing-detail' listing.id %}">Voir</a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-danger" href="{% url 'favorite-delete' listing.id %}">Supprimer</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <h3 class="my-3">Vous n'avez pas d' annonce dans les favorits</h3>
+                        <a href="{% url 'listing-list' %}"
+                           class="btn btn-secondary text-white btn-lg">
+                            Retour aux annonces
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
