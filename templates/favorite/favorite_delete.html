@@ -13,22 +13,8 @@
     </section>
 
     <!-- Breadcrumb -->
-    <section id="bc" class="mt-3">
-        <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="{% url 'home' %}">
-                            <i class="fas fa-home"></i> Home</a>
-                    </li>
-                    <li class="breadcrumb-item active"> Dashboard</li>
-                    <li class="breadcrumb-item"><a href="#">Message</a></li>
-                    <li class="breadcrumb-item"><a href="#">Favoris</a></li>
-                    <li class="breadcrumb-item"><a href="{% url 'profile-update' %}">Modifier mon compte</a></li>
-                </ol>
-            </nav>
-        </div>
-    </section>
+    {% include 'partials/menu.html' %}
+    <!-- end Breadcrumb -->
 
     {% include 'partials/alerts.html' %}
 
@@ -40,10 +26,10 @@
                         <div class="card-body">
                             <form method="POST">
                                 {% csrf_token %}
-                                <h3>Etes-vous sûr de supprimer ce produits dans vos favorits ?</h3>
+                                <h5 class="my-4">Etes-vous sûr de vouloir supprimer ce produit dans vos favoris ?</h5>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-danger">Supprimer</button>
-                                    <a href="#" class="btn btn-warning">Annuler</a>
+                                    <a href="{% url 'my-favorite' %}" class="btn btn-warning">Annuler</a>
                                 </div>
                             </form>
                         </div>

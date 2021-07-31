@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-12">
-                    <h1 class="display-4">Dashboard {{ user.username }}</h1>
+                    <h1 class="display-4">Mon Compte : {{ user.username }}</h1>
                     <p class="lead">App-Asso-Immo</p>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
-                            <h1 class="h3">Modifier mon Profile : <a href="{% url 'dashboard' %}">Retour à mon Profile</a></h1>
+                            <h1 class="h3">Modifier mon Profil : <a href="{% url 'dashboard' %}">Retour à mon Profil</a></h1>
                         </div>
                         <div class="card-body">
                             <form method="POST" enctype="multipart/form-data">
