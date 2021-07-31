@@ -12,6 +12,7 @@ class ListingsListView(ListView):
     model = Listing
     template_name = "listings/listing_list.html"
     context_object_name = "listings"
+    paginate_by = 2
 
 
 class ListingsDetail(LoginRequiredMixin, DetailView):

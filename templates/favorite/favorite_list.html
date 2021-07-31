@@ -13,22 +13,8 @@
     </section>
 
     <!-- Breadcrumb -->
-    <section id="bc" class="mt-3">
-        <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="{% url 'home' %}">
-                            <i class="fas fa-home"></i> Home</a>
-                    </li>
-                    <li class="breadcrumb-item active"> Dashboard</li>
-                    <li class="breadcrumb-item"><a href="#">Message</a></li>
-                    <li class="breadcrumb-item"><a href="#">Favoris</a></li>
-                    <li class="breadcrumb-item"><a href="{% url 'profile-update' %}">Modifier mon compte</a></li>
-                </ol>
-            </nav>
-        </div>
-    </section>
+    {% include 'partials/menu.html' %}
+    <!-- end Breadcrumb -->
 
     {% include 'partials/alerts.html' %}
 
@@ -52,7 +38,7 @@
                                 <tr>
                                     <td>{{ listing.product.title }}</td>
                                     <td>
-                                        <a class="btn btn-primary" href="{% url 'listing-detail' listing.id %}">Voir</a>
+                                        <a class="btn btn-primary" href="{% url 'listing-detail' listing.product.id %}">Voir</a>
                                     </td>
                                     <td>
                                         <a class="btn btn-danger" href="{% url 'favorite-delete' listing.id %}">Supprimer</a>

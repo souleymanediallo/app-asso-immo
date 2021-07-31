@@ -13,25 +13,8 @@
     </section>
 
     <!-- Breadcrumb -->
-    <section id="bc" class="mt-3">
-        <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="{% url 'home' %}">
-                            <i class="fas fa-home"></i> Home</a>
-                    </li>
-                    <li class="breadcrumb-item active"> Dashboard</li>
-                    <li class="breadcrumb-item"><a href="{% url 'message-dashboard' %}">Message</a></li>
-                    <li class="breadcrumb-item"><a href="#">Favoris</a></li>
-                    <li class="breadcrumb-item"><a href="{% url 'profile-update' %}">Modifier mon compte</a></li>
-                    {% if user.profile.realtor == True %}
-                    <li class="breadcrumb-item"><a href="{% url 'my-listing' %}">Mes Annonces</a></li>
-                    {% endif %}
-                </ol>
-            </nav>
-        </div>
-    </section>
+    {% include 'partials/menu.html' %}
+    <!-- end Breadcrumb -->
 
     <section id="dashboard" class="py-4">
         <div class="container">

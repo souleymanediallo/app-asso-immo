@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from listings.models import Listing
+from django.core.paginator import Paginator
+
 from .choices import bedroom_choices, price_choices, city_choices
 
 
@@ -17,6 +19,11 @@ def home(request):
 
 def search(request):
     listings = Listing.objects.all()
+    paginator = Paginator(listings, 1)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     # keywords
     if 'keywords' in request.GET:
         keywords = request.GET['keywords']
@@ -47,6 +54,7 @@ def search(request):
         'price_choices': price_choices,
         'bedroom_choices': bedroom_choices,
         'values': request.GET,
+        'page_obj': page_obj,
     }
     return render(request, "pages/search.html", context)
 
